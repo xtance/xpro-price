@@ -62,10 +62,26 @@
 						{category.n}
 					</summary>
 					{#each category.refs as ref}
-						<div class="flex p-4">
-							<div class="">
+						<div class="flex gap-4 [&>*]:w-1/5 shadow items-center">
+							<div class="p-4">
 								{ref.name}
 							</div>
+							<div>
+								Цена
+							</div>
+							<input
+								type="number"
+								class="p-4"
+								bind:value={ref.price}
+							/>
+							<div>
+								Вес
+							</div>
+							<input
+								type="number"
+								class="p-4"
+								bind:value={ref['gr']}
+							/>
 						</div>
 					{/each}
 				</details>

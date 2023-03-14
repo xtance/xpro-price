@@ -11,5 +11,8 @@ export default defineConfig({
 		svelte(),
 		postcss() as unknown as PluginOption,
 	],
+	build: {
+		outDir: 'docs',
+	},
 	base: './',
 })
