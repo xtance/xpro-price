@@ -1,0 +1,35 @@
+@tailwind utilities;
+@tailwind components;
+@tailwind base;
+
+*,
+*:before,
+*:after {
+	font-family: 'FontRegular';
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+
+	/* Firefox */
+	scrollbar-width: none !important;
+	scrollbar-color: transparent transparent;
+
+	/* Fix everything */
+	box-sizing: border-box;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+textarea:focus,
+input:focus,
+button:focus {
+	outline: none;
+}
+
+select,
+option,
+input,
+textarea {
+	color: initial;
+	margin: 0;
+	user-select: text;
+}
