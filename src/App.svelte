@@ -1,48 +1,78 @@
 <script lang="ts">
-    import { categories } from "./stores/categories";
-	import { currencies } from "./stores/currencies";
+    import type { Writable } from "svelte/store";
+    import { toJSON } from "./help/toJSON";
+	import Button from "./lib/Button.svelte";
+	import Details from "./lib/Details.svelte";
+    import Editable from "./lib/Editable.svelte";
+    import JSONView from "./lib/JSONView.svelte";
+	import { categories } from "./stores/categories";
+	import { drains } from "./stores/drains";
     import { faucets } from "./stores/faucets";
 
-	
+	let text = '';
+	let fileName = '';
 
-
+	const open = <T>(store: Writable<T>, _fileName: string) => { text = toJSON(store), fileName = _fileName };
+	const close = () => text = '';
 </script>
 
 <main class="p-4">
 
-	<div>
-		Краны
-	</div>
+	{#if text}
+		<JSONView {fileName} {text} {close} />
+	{/if}
 
-	<div class="flex">
-		{#each Object.entries($faucets) as [name, value]}
-			<div class="shadow">
-				<div class="p-4">{name}</div>
-				<input class="border-t p-4" bind:value={value} />
-			</div>
-		{/each}
-	</div>
+	<Details title="Краны" cls="bg-red-200">
+		<div class="p-4">
+			<Button on:click={() => open(faucets, 'faucets.json')}>
+				Экспорт
+			</Button>
+		</div>
+		<div class="flex flex-wrap">
+			{#each Object.entries($faucets) as editable}
+				<Editable {editable} />
+			{/each}
+		</div>
+	</Details>
 
-	<div>
-		Предметы
-	</div>
-	<div class="">
-		{#each $categories as category}
-			<details class="shadow mb-4">
-				<summary class="p-4 border-b">
-					{category.n}
-				</summary>
-				{#each category.refs as ref}
-					<div class="flex p-4">
-						<div class="">
-							{ref.name}
+	
+	<Details title="Сливы" cls="bg-blue-200">
+		<div class="p-4">
+			<Button on:click={() => open(drains, 'drains.json')}>
+				Экспорт
+			</Button>
+		</div>
+		<div class="flex flex-wrap">
+			{#each Object.entries($drains) as editable}
+				<Editable {editable} />
+			{/each}
+		</div>
+	</Details>
+
+	<Details title="Предметы" cls="bg-green-200">
+		<div class="p-4">
+			<Button on:click={() => open(categories, 'categories.json')}>
+				Экспорт
+			</Button>
+		</div>
+		<div class="">
+			{#each $categories as category}
+				<details class="shadow mb-4">
+					<summary class="p-4 border-b">
+						{category.n}
+					</summary>
+					{#each category.refs as ref}
+						<div class="flex p-4">
+							<div class="">
+								{ref.name}
+							</div>
 						</div>
-					</div>
-				{/each}
-			</details>
+					{/each}
+				</details>
 
-		{/each}
-	</div>
+			{/each}
+		</div>
+	</Details>
 
 
 </main>

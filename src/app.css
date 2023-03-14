@@ -19,6 +19,10 @@
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+html {
+	background-color: #232323;
+}
+
 textarea:focus,
 input:focus,
 button:focus {
