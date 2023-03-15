@@ -8,7 +8,12 @@ export default defineConfig({
 		port: 7878,
 	},
 	plugins: [
-		svelte(),
+		svelte({
+			onwarn: (warning, handler) => {
+				if (warning.code === 'a11y-click-events-have-key-events') return; // console.log(`[Warn]`, warning.code);
+				handler(warning);
+			}
+		}),
 		postcss() as unknown as PluginOption,
 	],
 	build: {
