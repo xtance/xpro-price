@@ -4,6 +4,7 @@ specifiers:
   '@sveltejs/vite-plugin-svelte': ^1.0.1
   '@tsconfig/svelte': ^3.0.0
   autoprefixer: ^10.4.14
+  izitoast: ^1.4.0
   postcss: ^8.4.21
   svelte: ^3.49.0
   svelte-check: ^2.8.0
@@ -12,6 +13,9 @@ specifiers:
   tslib: ^2.4.0
   typescript: ^4.6.4
   vite: ^3.0.0
+
+dependencies:
+  izitoast: 1.4.0
 
 devDependencies:
   '@sveltejs/vite-plugin-svelte': 1.4.0_svelte@3.56.0+vite@3.2.5
@@ -644,6 +648,10 @@ packages:
     resolution: {integrity: sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==}
     engines: {node: '>=0.12.0'}
     dev: true
+
+  /izitoast/1.4.0:
+    resolution: {integrity: sha512-Oc1X2wiQtPp39i5VpIjf3GJf5sfCtHKXZ5szx7RareyEeFLUlcEW0FSfBni28+Ul6KNKZRKzhVuWzSP4Xngh0w==}
+    dev: false
 
   /kleur/4.1.5:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
