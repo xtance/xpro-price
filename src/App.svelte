@@ -39,7 +39,12 @@
 						{category.n}
 					</summary>
 					{#each category.refs as ref}
-						<div class="flex gap-4 [&>*]:w-1/5 shadow items-center">
+						<div class="flex gap-4 [&>*]:w-1/6 shadow items-center">
+							<div
+								on:click={() => ref['buy'] = (ref['buy'] === false ? true : false)}
+								class={(ref['buy'] === false ? 'bg-red-400' : 'bg-green-400') + ' p-4'}>
+								Покупка
+							</div>
 							<div class="p-4">
 								{ref.name}
 							</div>
